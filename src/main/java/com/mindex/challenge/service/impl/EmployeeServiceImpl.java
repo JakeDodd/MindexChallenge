@@ -51,7 +51,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public List<Employee> readAll() {
-		// TODO Auto-generated method stub
+		LOG.debug("Retrieving all employees");
+		
 		return employeeRepository.findAll();
 	}
 }

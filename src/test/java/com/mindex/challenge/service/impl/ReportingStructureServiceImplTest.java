@@ -13,8 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.mindex.challenge.dao.EmployeeRepository;
 import com.mindex.challenge.data.ReportingStructure;
-import com.mindex.challenge.service.EmployeeService;
-import com.mindex.challenge.service.ReportingStructureService;
+import com.mindex.challenge.service.impl.utils.EmployeeEquivalence;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -48,11 +47,7 @@ public class ReportingStructureServiceImplTest {
     }
     
     private static void assertReportingStructureEquivalence(ReportingStructure expected, ReportingStructure actual) {
-        assertEquals(expected.getEmployee().getFirstName(), actual.getEmployee().getFirstName());
-        assertEquals(expected.getEmployee().getLastName(), actual.getEmployee().getLastName());
-        assertEquals(expected.getEmployee().getEmployeeId(), actual.getEmployee().getEmployeeId());
-        assertEquals(expected.getEmployee().getPosition(), actual.getEmployee().getPosition());
-        assertEquals(expected.getEmployee().getDepartment(), actual.getEmployee().getDepartment());
+        EmployeeEquivalence.assertEmployeeEquivalence(expected.getEmployee(), actual.getEmployee());
         assertEquals(expected.getNumberOfReports(), actual.getNumberOfReports());
     }
 }
